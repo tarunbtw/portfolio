@@ -50,7 +50,7 @@ const Home = () => (
         >
           <Box
             borderColor="whiteAlpha.800"
-            borderWidth={2}
+            borderWidth={1}
             borderStyle="solid"
             w="100px"
             h="100px"
@@ -59,7 +59,7 @@ const Home = () => (
             overflow="hidden"
           >
             <Image
-              src="/images/takuya.jpg"
+              src="/images/tarun.jpg"
               alt="Profile image"
               width="100"
               height="100"
