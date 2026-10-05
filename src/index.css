@@ -1,1 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap");
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Geist Pixel', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Pixel', 'IBM Plex Mono', monospace;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: 'Geist Pixel', monospace, sans-serif;
+}
+
+:root {
+  --vignette-bg: #ffffff;
+}
+
+:root.dark {
+  --vignette-bg: #0a0a0c;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--vignette-bg, #0a0a0c);
+  color: #171717;
+}
+
+html.dark {
+  color: #ededed;
+}
+
+body {
+  background-color: var(--vignette-bg, #0a0a0c);
+  overflow-x: hidden;
+}
+
+/* Hide scrollbars completely across all browsers while maintaining scrolling */
+html,
+body,
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Circular theme transition flowing smoothly from top middle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+  animation: circular-theme-reveal 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes circular-theme-reveal {
+  0% {
+    clip-path: circle(0% at 50% 0%);
+  }
+  100% {
+    clip-path: circle(160% at 50% 0%);
+  }
+}
